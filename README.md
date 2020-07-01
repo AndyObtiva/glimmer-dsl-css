@@ -20,20 +20,20 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-jgem install glimmer-dsl-xml -v 0.1.0
+jgem install glimmer-dsl-css -v 0.1.0
 ```
 
 `jgem` is JRuby's version of `gem` command. 
 RVM allows running `gem` as an alias.
 Otherwise, you may also run `jruby -S gem install ...`
 
-Add `require 'glimmer-dsl-xml'` to your code after `require glimmer-dsl-swt` or `require glimmer-dsl-opal`
+Add `require 'glimmer-dsl-css'` to your code after `require glimmer-dsl-swt` or `require glimmer-dsl-opal`
 
 ### Option 2: Bundler
 
 Add the following to `Gemfile` after `glimmer-dsl-swt` or `glimmer-dsl-opal`:
 ```
-gem 'glimmer-dsl-xml', '~> 0.1.0'
+gem 'glimmer-dsl-css', '~> 0.1.0'
 ```
 
 And, then run:
@@ -41,7 +41,7 @@ And, then run:
 jruby -S bundle install
 ```
 
-That's it! Requiring the gem activates the Glimmer XML DSL automatically.
+That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 ## CSS DSL
 
