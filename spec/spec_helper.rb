@@ -1,4 +1,16 @@
-require 'bundler'
+require 'simplecov'
+require 'simplecov-lcov'
+require 'coveralls' if ENV['TRAVIS']
+
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+formatters = []
+formatters << SimpleCov::Formatter::LcovFormatter
+formatters << Coveralls::SimpleCov::Formatter if ENV['TRAVIS']
+SimpleCov.formatters = formatters
+SimpleCov.start do
+  add_filter(/^\/spec\//)
+end
+
 require 'puts_debuggerer' unless ENV['puts_debuggerer'] == 'false'
 begin
   Bundler.require(:default, :development, :test)
@@ -7,7 +19,6 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-
 FIXTURES_PATH = File.expand_path('../fixtures', __FILE__)
 ROOT_PATH = File.expand_path('../..', __FILE__)
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
@@ -123,23 +134,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-end
-
-begin
-  ENV['APP_ENV'] = 'test'
-  require "simplecov"
-  module SimpleCov::Configuration
-    def clean_filters
-      @filters = []
-    end
-  end
-  SimpleCov.configure do
-    clean_filters
-    load_adapter 'test_frameworks'
-  end
-  SimpleCov.start
-rescue LoadError, StandardError => e
-  puts 'Failed to load/configure SimpleCov'
-  puts e.full_message
 end
 require_relative '../lib/glimmer-dsl-css'
