@@ -1,6 +1,8 @@
 # [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 0.2.0
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
+[![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/glimmer-dsl-css/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/glimmer-dsl-css?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c7365cdb8556be433115/maintainability)](https://codeclimate.com/github/AndyObtiva/glimmer-dsl-css/maintainability)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets).
