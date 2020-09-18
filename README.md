@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 0.2.0
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.0.0
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/glimmer-dsl-css/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/glimmer-dsl-css?branch=master)
@@ -7,11 +7,10 @@
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets).
 
-Within the context of [Glimmer](https://github.com/AndyObtiva/glimmer) app development, Glimmer DSL for CSS is useful in providing CSS for the [SWT Browser widget](https://github.com/AndyObtiva/glimmer/tree/master#browser-widget).
+Within the context of [Glimmer](https://github.com/AndyObtiva/glimmer) app development, Glimmer DSL for CSS is useful in providing CSS for the [SWT Browser widget](https://github.com/AndyObtiva/glimmer-dsl-swt/tree/master#browser-widget).
 
 Other [Glimmer](https://github.com/AndyObtiva/glimmer) DSL gems:
-- [glimmer-dsl-swt](https://github.com/AndyObtiva/glimmer-dsl-swt): Glimmer DSL for SWT (JRuby Desktop GUI)
-- [glimmer-dsl-tk](https://github.com/AndyObtiva/glimmer-dsl-tk): Glimmer DSL for Tk (Ruby Desktop GUI)
+- [glimmer-dsl-swt](https://github.com/AndyObtiva/glimmer-dsl-swt): Glimmer DSL for SWT (Desktop GUI)
 - [glimmer-dsl-opal](https://github.com/AndyObtiva/glimmer-dsl-opal): Glimmer DSL for Opal (Web GUI Adapter for Desktop Apps)
 - [glimmer-dsl-xml](https://github.com/AndyObtiva/glimmer-dsl-xml): Glimmer DSL for XML (& HTML)
 
@@ -23,16 +22,14 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-jgem install glimmer-dsl-css -v 0.2.0
+gem install glimmer-dsl-css -v 1.0.0
 ```
 
-`jgem` is JRuby's version of `gem` command. 
-RVM allows running `gem` as an alias.
-Otherwise, you may also run `jruby -S gem install ...`
+Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
 
 Add `require 'glimmer-dsl-css'` to your code.
 
-When using with Glimmer DSL for SWT or Glimmer DSL for Opal, make sure it is added after `require glimmer-dsl-swt` and `require glimmer-dsl-opal` to give it a lower precedence than them when processed by the Glimmer DSL engine.
+When using with [Glimmer DSL for SWT](https://github.com/AndyObtiva/glimmer-dsl-swt) or [Glimmer DSL for Opal](https://github.com/AndyObtiva/glimmer-dsl-opal), make sure it is added after `require glimmer-dsl-swt` and `require glimmer-dsl-opal` to give it a lower precedence than them when processed by the Glimmer DSL engine.
 
 That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
@@ -40,7 +37,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 0.2.0'
+gem 'glimmer-dsl-css', '~> 1.0.0'
 ```
 
 And, then run:
@@ -64,7 +61,7 @@ Once done, you may call `to_s` or `to_css` to get the formatted CSS output.
 Selectors may be specified by `s` keyword or HTML element keyword directly (e.g. `body`)
 Rule property values may be specified by `pv` keyword or underscored property name directly (e.g. `font_size`)
 
-Example (you may copy/paste in [`girb`](#girb-glimmer-irb-command)):
+Example:
 
 ```ruby
 @css = css {
@@ -91,9 +88,9 @@ Learn more about how to use this DSL alongside other Glimmer DSLs:
 
 ### Issues
 
-You may submit [issues](https://github.com/AndyObtiva/glimmer/issues) on [GitHub](https://github.com/AndyObtiva/glimmer/issues).
+You may submit [issues](https://github.com/AndyObtiva/glimmer-dsl-css/issues) on [GitHub](https://github.com/AndyObtiva/glimmer-dsl-css/issues).
 
-[Click here to submit an issue.](https://github.com/AndyObtiva/glimmer/issues)
+[Click here to submit an issue.](https://github.com/AndyObtiva/glimmer-dsl-css/issues)
 
 ### Chat
 
