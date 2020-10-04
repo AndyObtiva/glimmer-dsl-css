@@ -36,8 +36,11 @@ module Glimmer
 
       def to_css
         css = "#{@selector}{"
-        css << @properties.map { |name, value| "#{name}:#{value}" }.join(';')
-        css << "}"
+        css += @properties.map do |name, value| 
+          value = "#{value}px" if value.is_a?(Numeric)
+          "#{name}:#{value}" 
+        end.join(';')
+        css += "}"
       end
 
       alias to_s to_css      

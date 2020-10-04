@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.0
+
+- Opal Ruby Compatibility by removing `String` mutations via `<<` method
+- Make `pv` always interpret numeric values as pixels by convention.
+
 ## 1.0.0
 
 - Upgraded to Glimmer 1.0.0

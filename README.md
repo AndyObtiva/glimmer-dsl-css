@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.0.0
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.1.0
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/glimmer-dsl-css/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/glimmer-dsl-css?branch=master)
@@ -8,6 +8,8 @@
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets).
 
 Within the context of [Glimmer](https://github.com/AndyObtiva/glimmer) app development, Glimmer DSL for CSS is useful in providing CSS for the [SWT Browser widget](https://github.com/AndyObtiva/glimmer-dsl-swt/tree/master#browser-widget).
+
+Additionally, it is useful with [Glimmer DSL for Opal](https://github.com/AndyObtiva/glimmer-dsl-opal)
 
 Other [Glimmer](https://github.com/AndyObtiva/glimmer) DSL gems:
 - [glimmer-dsl-swt](https://github.com/AndyObtiva/glimmer-dsl-swt): Glimmer DSL for SWT (JRuby Desktop Development GUI Library)
@@ -23,7 +25,7 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-gem install glimmer-dsl-css -v 1.0.0
+gem install glimmer-dsl-css -v 1.1.0
 ```
 
 Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
@@ -38,7 +40,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 1.0.0'
+gem 'glimmer-dsl-css', '~> 1.1.0'
 ```
 
 And, then run:
@@ -64,22 +66,33 @@ Once done, you may call `to_s` or `to_css` to get the formatted CSS output.
 Selectors may be specified by `s` keyword or HTML element keyword directly (e.g. `body`)
 Rule property values may be specified by `pv` keyword or underscored property name directly (e.g. `font_size`)
 
-Example:
+Example (you can try in IRB):
 
 ```ruby
+require 'glimmer-dsl-css'
+include Glimmer
 @css = css {
   body {
     font_size '1.1em'
     pv 'background', 'white'
-  }
-  
+  }  
   s('body > h1') {
     background_color :red
-    pv 'font-size', '2em'
+    pv 'font-size', 24
   }
 }
 puts @css
 ```
+
+Output (minified CSS):
+
+```css
+body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:24px}
+```
+
+### Numeric Values
+
+As you saw above, numeric values (e.g. `24` in `pv 'font-size', 24`) automatically get suffixed with `px` by convention (e.g. `24px`).
 
 ## Multi-DSL Support
 
