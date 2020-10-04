@@ -58,6 +58,8 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 ## CSS DSL
 
+The key reason for using the CSS DSL instead of actual CSS is Ruby programmability without getting lost in string concatenations. The CSS DSL helps in including conditional CSS as well as looping from lists while building CSS.
+
 Simply start with `css` keyword and add stylesheet rule sets inside its block using Glimmer DSL syntax.
 Once done, you may call `to_s` or `to_css` to get the formatted CSS output.
 
