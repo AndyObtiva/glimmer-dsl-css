@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.1.0
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.2.0
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/glimmer-dsl-css/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/glimmer-dsl-css?branch=master)
@@ -25,7 +25,7 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-gem install glimmer-dsl-css -v 1.1.0
+gem install glimmer-dsl-css -v 1.2.0
 ```
 
 Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
@@ -40,7 +40,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 1.1.0'
+gem 'glimmer-dsl-css', '~> 1.2.0'
 ```
 
 And, then run:
@@ -77,7 +77,7 @@ include Glimmer
   body {
     font_size '1.1em'
     pv 'background', 'white'
-  }  
+  }
   s('body > h1') {
     background_color :red
     pv 'font-size', 24
