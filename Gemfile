@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'glimmer', '~> 2.0.0'
+gem 'glimmer', '>= 2.0.0', '< 2.5.0'
 
 group :development do
-  gem 'rspec-mocks', '~> 3.5.0'
-  gem 'rspec', '~> 3.5.0'
+  gem 'rspec-mocks', '~> 3.0'
+  gem 'rspec', '~> 3.0'
   gem 'puts_debuggerer', require: false
   gem 'rake', '>= 10.1.0', '< 14.0.0'
   gem 'jeweler', '>= 2.3.9', '< 3.0.0'

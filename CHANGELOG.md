@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.2.1
+
+- Relax glimmer dependency to between 2.0.0 and 2.4.x
+
+## 1.2.0
+
+- Upgrade to glimmer 2.0.0
+
 ## 1.1.0
 
 - Opal Ruby Compatibility by removing `String` mutations via `<<` method
