@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.2
+
+- Relax glimmer dependency to between 2.0.0 and 3.0.0
+
 ## 1.2.1
 
 - Relax glimmer dependency to between 2.0.0 and 2.4.x
