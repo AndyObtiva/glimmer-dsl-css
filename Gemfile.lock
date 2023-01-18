@@ -51,6 +51,8 @@ GEM
     multipart-post (2.1.1)
     nokogiri (1.13.1-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -62,7 +64,7 @@ GEM
     puts_debuggerer (0.13.2)
       awesome_print (~> 1.9.2)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.6.2)
     rake (13.0.6)
     rchardet (1.8.0)
     rdoc (6.4.0)
@@ -98,6 +100,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   coveralls (= 0.8.23)
