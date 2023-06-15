@@ -146,7 +146,7 @@ These features have been suggested. You might see them in a future version of Gl
 
 [MIT](LICENSE.txt)
 
-Copyright (c) 2020-2022 - Andy Maleh.
+Copyright (c) 2020-2023 - Andy Maleh.
 
 --
 
