@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c7365cdb8556be433115/maintainability)](https://codeclimate.com/github/AndyObtiva/glimmer-dsl-css/maintainability)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets). It used to be part of the [Glimmer](https://github.com/AndyObtiva/glimmer) library (created in 2007), but eventually got extracted into its own project. 
+[Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets). It used to be part of the [Glimmer](https://github.com/AndyObtiva/glimmer) library (created in 2007), but eventually got extracted into its own project.
 
 Within the context of [Glimmer](https://github.com/AndyObtiva/glimmer) app development, Glimmer DSL for CSS is useful in providing CSS for the [SWT Browser widget](https://github.com/AndyObtiva/glimmer-dsl-swt/tree/master#browser-widget).
 
@@ -72,11 +72,11 @@ include Glimmer
 @css = css {
   body {
     font_size '1.1em'
-    pv 'background', 'white'
+    background 'white'
   }
   s('body > h1') {
     background_color :red
-    pv 'font-size', 24
+    font_size 24
   }
 }
 puts @css
@@ -90,7 +90,7 @@ body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:2
 
 ### Numeric Values
 
-As you saw above, numeric values (e.g. `24` in `pv 'font-size', 24`) automatically get suffixed with `px` by convention (e.g. `24px`).
+As you saw above, numeric values (e.g. `24` in `font_size 24`) automatically get suffixed with `px` by convention (e.g. `24px`).
 
 ## Multi-DSL Support
 
