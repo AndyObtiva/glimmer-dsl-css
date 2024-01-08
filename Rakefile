@@ -20,8 +20,8 @@ unless jeweler_required.nil?
     gem.name = "glimmer-dsl-css"
     gem.homepage = "http://github.com/AndyObtiva/glimmer-dsl-css"
     gem.license = "MIT"
-    gem.summary = %Q{Glimmer DSL for CSS}
-    gem.description = %Q{Glimmer DSL for CSS (Cascading Style Sheets)}
+    gem.summary = %Q{Glimmer DSL for CSS (Ruby Programmable Cascading Style Sheets)}
+    gem.description = %Q{Glimmer DSL for CSS (Ruby Programmable Cascading Style Sheets)}
     gem.email = "andy.am@gmail.com"
     gem.authors = ["AndyMaleh"]
     gem.executables = []

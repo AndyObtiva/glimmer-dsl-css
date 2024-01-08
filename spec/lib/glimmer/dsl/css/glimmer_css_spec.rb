@@ -65,6 +65,81 @@ describe "Glimmer CSS DSL" do
     expect(@target.to_css).to eq('body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
   end
    
+  it 'renders two custom selectors with two properties each (one is numeric representing pixels) using rule' do
+    @target = css {
+      rule('body#app h1#title') {
+        font_size 16
+        font_family '"Times New Roman", Times, serif'
+      }
+      rule('section#menu > a#home') {
+        background :red
+        text_align :center
+      }
+    }
+   
+    expect(@target.to_css).to eq('body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
+  end
+   
+  it 'renders two custom selectors with two properties each (one is numeric representing pixels) using rul' do
+    @target = css {
+      rul('body#app h1#title') {
+        font_size 16
+        font_family '"Times New Roman", Times, serif'
+      }
+      rul('section#menu > a#home') {
+        background :red
+        text_align :center
+      }
+    }
+   
+    expect(@target.to_css).to eq('body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
+  end
+   
+  it 'renders two custom selectors with two properties each (one is numeric representing pixels) using ru' do
+    @target = css {
+      ru('body#app h1#title') {
+        font_size 16
+        font_family '"Times New Roman", Times, serif'
+      }
+      ru('section#menu > a#home') {
+        background :red
+        text_align :center
+      }
+    }
+   
+    expect(@target.to_css).to eq('body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
+  end
+   
+  it 'renders two custom selectors with two properties each (one is numeric representing pixels) using r' do
+    @target = css {
+      r('body#app h1#title') {
+        font_size 16
+        font_family '"Times New Roman", Times, serif'
+      }
+      r('section#menu > a#home') {
+        background :red
+        text_align :center
+      }
+    }
+   
+    expect(@target.to_css).to eq('body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
+  end
+   
+  it 'renders two custom selectors with two properties each (one is numeric representing pixels) using _' do
+    @target = css {
+      _('body#app h1#title') {
+        font_size 16
+        font_family '"Times New Roman", Times, serif'
+      }
+      _ 'section#menu > a#home' do
+        background :red
+        text_align :center
+      end
+    }
+   
+    expect(@target.to_css).to eq('body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
+  end
+   
   it 'renders two custom selectors with two custom properties each' do
     @target = css {
       s('body#app h1#title') {

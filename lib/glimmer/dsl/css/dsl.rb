@@ -21,9 +21,12 @@
 
 require 'glimmer/dsl/engine'
 # Dir[File.expand_path('../*_expression.rb', __FILE__)].each {|f| require f} # cannot in Opal
-require 'glimmer/dsl/css/rule_expression'
+require 'glimmer/dsl/css/element_rule_expression'
 require 'glimmer/dsl/css/dynamic_property_expression'
 require 'glimmer/dsl/css/css_expression'
+require 'glimmer/dsl/css/rule_expression'
+require 'glimmer/dsl/css/rul_expression'
+require 'glimmer/dsl/css/ru_expression'
 require 'glimmer/dsl/css/s_expression'
 require 'glimmer/dsl/css/pv_expression'
 
@@ -33,7 +36,7 @@ module Glimmer
       Engine.add_dynamic_expressions(
         CSS,
         %w[
-          rule
+          element_rule
           dynamic_property
         ]
       )

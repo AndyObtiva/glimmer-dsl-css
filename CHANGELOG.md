@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.3
+
+- Add `r`, `ru`, `rul`, `rule`, `_` alternatives to `s` for specifying a CSS rule selector with a block of expressions (e.g. `r('body > h1') { color: red; }`)
+
 ## 1.2.2
 
 - Relax glimmer dependency to between 2.0.0 and 3.0.0

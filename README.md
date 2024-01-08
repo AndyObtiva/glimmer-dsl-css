@@ -1,4 +1,5 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.2.2
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.2.3
+## Ruby Programmable Cascading Style Sheets
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/glimmer-dsl-css/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/glimmer-dsl-css?branch=master)
@@ -21,7 +22,7 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-gem install glimmer-dsl-css -v 1.2.2
+gem install glimmer-dsl-css -v 1.2.3
 ```
 
 Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
@@ -36,7 +37,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 1.2.2'
+gem 'glimmer-dsl-css', '~> 1.2.3'
 ```
 
 And, then run:
@@ -61,8 +62,8 @@ Once done, you may call `to_s` or `to_css` to get the formatted CSS output.
 
 `css` is the only top-level keyword in the Glimmer CSS DSL
 
-Selectors may be specified by `s` keyword or HTML element keyword directly (e.g. `body`)
-Rule property values may be specified by `pv` keyword or underscored property name directly (e.g. `font_size`)
+Selectors may be specified by any of `_`, `s`, `r`, `ru`, `rul`, `rule` keywords or HTML element keyword directly (e.g. `body`)
+Rule property values may be specified by underscored property name directly (e.g. `font_size`), which is auto-translated to CSS property name by replacing underscores with dashes (e.g. `font-size`)
 
 Example (you can try in IRB):
 
@@ -74,7 +75,7 @@ include Glimmer
     font_size '1.1em'
     background 'white'
   }
-  s('body > h1') {
+  _('body > h1') {
     background_color :red
     font_size 24
   }
@@ -88,9 +89,63 @@ Output (minified CSS):
 body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:24px}
 ```
 
+The `body > h1` rule could have been written in any other alternative way:
+
+```ruby
+  rule('body > h1') {
+    background_color :red
+    font_size 24
+  }
+```
+
+```ruby
+  r('body > h1') {
+    background_color :red
+    font_size 24
+  }
+```
+
+```ruby
+  _ 'body > h1' do
+    background_color :red
+    font_size 24
+  end
+```
+
+The key benefit of using Glimmer DSL for CSS is programmability as it enables you to mix if statements and ternery conditionals with CSS syntax.
+
+```
+  _('body > h1') {
+    background_color is_error ? :red : :green
+    font_size new_user ? 24 : 20
+  }
+```
+
 ### Numeric Values
 
 As you saw above, numeric values (e.g. `24` in `font_size 24`) automatically get suffixed with `px` by convention (e.g. `24px`).
+
+```ruby
+require 'glimmer-dsl-css'
+include Glimmer
+@css = css {
+  body {
+    font_size '1.1em'
+    background 'white'
+  }
+  _ 'body > h1' do
+    background_color :red
+    font_size 24
+  end
+}
+puts @css
+```
+
+Output (minified CSS):
+
+```css
+body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:24px}
+```
 
 ## Multi-DSL Support
 

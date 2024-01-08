@@ -19,15 +19,28 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/dsl/static_expression'
-
-require 'glimmer/dsl/css/general_rule_expression'
+require 'glimmer/dsl/expression'
+require 'glimmer/dsl/parent_expression'
+require 'glimmer/css/style_sheet'
+require 'glimmer/css/rule'
 
 module Glimmer
   module DSL
     module CSS
-      class RuleExpression < StaticExpression
-        include GeneralRuleExpression
+      class ElementRuleExpression < Expression
+        include ParentExpression
+
+        def can_interpret?(parent, keyword, *args, &block)
+          parent.is_a?(Glimmer::CSS::StyleSheet) and
+            block_given? and
+            args.empty?
+        end
+
+        def interpret(parent, keyword, *args, &block)
+          Glimmer::CSS::Rule.new(keyword.to_s.downcase).tap do |rule|
+            parent.rules << rule
+          end
+        end
       end
     end
   end

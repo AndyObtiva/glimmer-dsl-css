@@ -26,3 +26,12 @@ require 'facets/string/camelcase'
 require 'glimmer'
 
 require 'glimmer/dsl/css/dsl'
+
+module Glimmer
+  def _(selector, &rule_block)
+    rule(selector, &rule_block)
+  end
+  def r(selector, &rule_block)
+    rule(selector, &rule_block)
+  end
+end

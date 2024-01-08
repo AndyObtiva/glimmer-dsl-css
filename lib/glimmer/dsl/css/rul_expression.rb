@@ -26,7 +26,7 @@ require 'glimmer/dsl/css/general_rule_expression'
 module Glimmer
   module DSL
     module CSS
-      class RuleExpression < StaticExpression
+      class RulExpression < StaticExpression
         include GeneralRuleExpression
       end
     end
