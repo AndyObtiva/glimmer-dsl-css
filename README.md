@@ -8,16 +8,40 @@
 
 [Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets). It used to be part of the [Glimmer](https://github.com/AndyObtiva/glimmer) library (created in 2007), but eventually got extracted into its own project.
 
-Within the context of [Glimmer](https://github.com/AndyObtiva/glimmer) app development, Glimmer DSL for CSS is useful in providing CSS for [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web), [Glimmer DSL for Opal](https://github.com/AndyObtiva/glimmer-dsl-opal), and the [SWT Browser widget](https://github.com/AndyObtiva/glimmer-dsl-swt/tree/master#browser-widget).
+Example (you can try in IRB):
 
-The key benefit of using Glimmer DSL for CSS is programmability as it enables you to mix if statements and ternery conditionals with CSS syntax.
+```ruby
+require 'glimmer-dsl-css'
+include Glimmer
+@css = css {
+  body {
+    font_size '1.1em'
+    background 'white'
+  }
+  r('body > h1') {
+    background_color :red
+    font_size 24
+  }
+}
+puts @css
+```
+
+Output (minified CSS):
+
+```css
+body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:24px}
+```
+
+The key reason for using the CSS DSL instead of actual CSS is Ruby programmability without getting lost in string concatenations. The CSS DSL helps in including conditional CSS with `if` or ternery expressions as well as looping from lists while building CSS.
 
 ```
-  _('body > h1') {
+  rule('body > h1') {
     background_color is_error ? :red : :green
     font_size new_user ? 24 : 20
   }
 ```
+
+Within the context of [Glimmer](https://github.com/AndyObtiva/glimmer) app development, Glimmer DSL for CSS is useful in providing CSS for [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web), [Glimmer DSL for Opal](https://github.com/AndyObtiva/glimmer-dsl-opal), and the [SWT Browser widget](https://github.com/AndyObtiva/glimmer-dsl-swt/tree/master#browser-widget).
 
 Learn more about the differences between various [Glimmer](https://github.com/AndyObtiva/glimmer) DSLs by looking at the **[Glimmer DSL Comparison Table](https://github.com/AndyObtiva/glimmer#glimmer-dsl-comparison-table)**.
 
@@ -62,7 +86,14 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 ## CSS DSL
 
-The key reason for using the CSS DSL instead of actual CSS is Ruby programmability without getting lost in string concatenations. The CSS DSL helps in including conditional CSS as well as looping from lists while building CSS.
+The key reason for using the CSS DSL instead of actual CSS is Ruby programmability without getting lost in string concatenations. The CSS DSL helps in including conditional CSS with `if` or ternery expressions as well as looping from lists while building CSS.
+
+```
+  _('body > h1') {
+    background_color is_error ? :red : :green
+    font_size new_user ? 24 : 20
+  }
+```
 
 Simply start with `css` keyword and add stylesheet rule sets inside its block using Glimmer DSL syntax.
 Once done, you may call `to_s` or `to_css` to get the formatted CSS output.
@@ -124,15 +155,6 @@ The `body > h1` rule could have been written in any other alternative way:
     background_color :red
     font_size 24
   end
-```
-
-The key benefit of using Glimmer DSL for CSS is programmability as it enables you to mix if statements and ternery conditionals with CSS syntax.
-
-```
-  _('body > h1') {
-    background_color is_error ? :red : :green
-    font_size new_user ? 24 : 20
-  }
 ```
 
 ### Numeric Values
