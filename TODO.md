@@ -4,7 +4,9 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 
 ## Next
 
+- Document how to include method-based CSS mixins in Glimmer DSL for CSS
 - Support nesting rules within each other (e.g. `r('table') { r('tr') { background :blue } }` is equivalent to `r('table tr') { background :blue }`)
+- Support mixins via classes (class-based CSS mixins)
 - Optimize performance by removing unnecessary DSL expressions like element_rule_expression.rb and pv_expression.rb
 - Removed unnecessary files that are remnant of original glimmer before extraction
 
