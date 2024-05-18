@@ -89,7 +89,10 @@ module Glimmer
       
       def convert_rule_set_to_glimmer(rule_set)
         glimmer = ''
+        require 'pd'
+        pd rule_set
         rule_set.each_with_index do |rule, index|
+          pd rule
           glimmer += "\n" if index > 0
           rule_selector = rule.selectors.join(', ').gsub("'", '"')
           glimmer += "#{rule_keyword}('#{rule_selector}') {\n"
