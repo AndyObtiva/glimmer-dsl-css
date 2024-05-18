@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.1
+
+- Optimize performance (mostly in Opal) by re-ordering dsl.rb to give preference to dynamic property expressions, removing media from its chain of responsibility (it does not need to be there because it is a static expression), and re-ordering conditional checks in dynamic property expression and element rule expression.
+
 ## 1.4.0
 
 - `css_to_glimmer` converter command for automatically converting CSS to Glimmer DSL Ruby code

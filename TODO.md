@@ -4,7 +4,10 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 
 ## Next
 
+- Support `raw 'background-color: red;'` keyword to allow adding raw CSS to a `css { }` block
+
 - Document how to include method-based CSS mixins in Glimmer DSL for CSS
+- Support the new CSS nesting feature (ability to nest a rule within another rule using &)
 - Document an example with an `if` statement and with looping (e.g. `times` or `each`)
 - Support nesting rules within each other (e.g. `r('table') { r('tr') { background :blue } }` is equivalent to `r('table tr') { background :blue }`)
 - Support mixins via classes (class-based CSS mixins)

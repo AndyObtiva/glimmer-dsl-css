@@ -268,4 +268,29 @@ describe Glimmer::CSS::CSSToGlimmerConverter do
   it 'fails to convert css with invalid abc rule variation' do
     expect { described_class.new(rule_keyword: 'abc') }.to raise_error
   end
+  
+  
+  xit 'converts rules with CSS nesting' do
+    css = <<~CSS
+      body {
+        & .h1.header {
+          font-weight: bold;
+          font-family: "'Times New Roman', Arial";
+        }
+      }
+    CSS
+    
+    glimmer = subject.convert(css)
+    
+    expected_glimmer = <<~GLIMMER
+      #{prefix}
+        rule('body h1.header') {
+          font_weight 'bold'
+          font_family '"Times New Roman", Arial'
+        }
+      #{suffix}
+    GLIMMER
+    
+    expect(glimmer).to eq(expected_glimmer)
+  end
 end

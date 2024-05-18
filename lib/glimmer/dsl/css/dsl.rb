@@ -38,9 +38,8 @@ module Glimmer
       Engine.add_dynamic_expressions(
         CSS,
         %w[
-          media
-          element_rule
           dynamic_property
+          element_rule
         ]
       )
     end

@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.4.0
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.4.1
 ## Ruby Programmable Cascading Style Sheets
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
@@ -6,7 +6,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c7365cdb8556be433115/maintainability)](https://codeclimate.com/github/AndyObtiva/glimmer-dsl-css/maintainability)
 [![Join the chat at https://gitter.im/AndyObtiva/glimmer](https://badges.gitter.im/AndyObtiva/glimmer.svg)](https://gitter.im/AndyObtiva/glimmer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets). It used to be part of the [Glimmer](https://github.com/AndyObtiva/glimmer) library (created in 2007), but eventually got extracted into its own project. The Ruby gem also includes a [CSS to Glimmer converter](#css-to-glimmer-converter) (`css_to_glimmer`) to automatically convert legacy CSS code into Glimmer DSL syntax.
+[Glimmer](https://github.com/AndyObtiva/glimmer) DSL for CSS provides Ruby syntax for building CSS (Cascading Style Sheets), included in [Glimmer DSL for Web](https://github.com/AndyObtiva/glimmer-dsl-web) (Ruby in the Browser Web Frontend Framework) to use in Rails Frontend Development. It used to be part of the [Glimmer](https://github.com/AndyObtiva/glimmer) library (created in 2007), but eventually got extracted into its own project. The Ruby gem also includes a [CSS to Glimmer converter](#css-to-glimmer-converter) (`css_to_glimmer`) to automatically convert legacy CSS code into Glimmer DSL syntax.
 
 Example (you can try in IRB):
 
@@ -64,7 +64,7 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-gem install glimmer-dsl-css -v 1.4.0
+gem install glimmer-dsl-css -v 1.4.1
 ```
 
 Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
@@ -79,7 +79,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 1.4.0'
+gem 'glimmer-dsl-css', '~> 1.4.1'
 ```
 
 And, then run:
@@ -217,11 +217,32 @@ css_to_glimmer [-r=rule_keyword] path_to_css_file
 
 Example:
 
+Suppose we have a CSS file called `input.css`:
+
+```css
+html, body {
+  margin:0;
+  padding:0;
+}
+
+@media (max-width: 430px) {
+  .footer {
+    height:50px;
+  }
+
+  .filters {
+    bottom:10px;
+  }
+}
+```
+
+We can run this command:
+
 ```
 css_to_glimmer input.css
 ```
 
-Prints:
+Printout:
 
 ```
 Converting from CSS syntax to Glimmer DSL Ruby syntax for input file: input.css
@@ -230,7 +251,7 @@ Converted output file: input.css.glimmer.rb
 
 Output file (`input.css.glimmer.rb`) is a runnable Ruby file containing Glimmer DSL for CSS syntax:
 
-```
+```ruby
 require 'glimmer-dsl-css'
 
 include Glimmer
@@ -263,7 +284,7 @@ css_to_glimmer -r=ru input.css
 
 Output file (`input.css.glimmer.rb`) is a runnable Ruby file containing Glimmer DSL for CSS syntax:
 
-```
+```ruby
 require 'glimmer-dsl-css'
 
 include Glimmer

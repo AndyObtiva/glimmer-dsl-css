@@ -31,9 +31,9 @@ module Glimmer
         include ParentExpression
 
         def can_interpret?(parent, keyword, *args, &block)
-          parent.is_a?(Glimmer::CSS::StyleSheet) and
-            block_given? and
-            args.empty?
+          block_given? and
+            args.empty? and
+            parent.is_a?(Glimmer::CSS::StyleSheet)
         end
 
         def interpret(parent, keyword, *args, &block)
