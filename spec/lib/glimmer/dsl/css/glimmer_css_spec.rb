@@ -154,5 +154,44 @@ describe "Glimmer CSS DSL" do
    
     expect(@target.to_css).to eq('body#app h1#title{font-size:2em;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
   end
+  
+  context 'Media Queries' do
+    it 'renders two custom selectors in a media query' do
+      @target = css {
+        media('screen and (min-width: 30em) and (orientation: landscape)') {
+          rule('body#app h1#title') {
+            font_size 16
+            font_family '"Times New Roman", Times, serif'
+          }
+          rule('section#menu > a#home') {
+            background :red
+            text_align :center
+          }
+        }
+      }
+     
+      expect(@target.to_css).to eq('@media screen and (min-width: 30em) and (orientation: landscape){body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}}')
+    end
+    
+    it 'renders two custom selectors each in a separate media query' do
+      @target = css {
+        media('screen and (min-width: 30em) and (orientation: landscape)') {
+          rule('body#app h1#title') {
+            font_size 16
+            font_family '"Times New Roman", Times, serif'
+          }
+        }
+        
+        media('screen and (min-width: 60em) and (orientation: portrait)') {
+          rule('section#menu > a#home') {
+            background :red
+            text_align :center
+          }
+        }
+      }
+     
+      expect(@target.to_css).to eq('@media screen and (min-width: 30em) and (orientation: landscape){body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}}@media screen and (min-width: 60em) and (orientation: portrait){section#menu > a#home{background:red;text-align:center}}')
+    end
+  end
    
 end

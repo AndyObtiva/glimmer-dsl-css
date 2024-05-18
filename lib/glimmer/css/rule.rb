@@ -24,9 +24,11 @@ module Glimmer
     class Rule
       attr_reader :selector, :properties
 
-      def initialize(selector)
+      def initialize(selector, parent:)
         @selector = selector
         @properties = {}
+        @parent = parent
+        parent.rules << self
       end
 
       def add_property(keyword, *args)

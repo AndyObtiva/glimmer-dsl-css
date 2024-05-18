@@ -37,9 +37,7 @@ module Glimmer
         end
 
         def interpret(parent, keyword, *args, &block)
-          Glimmer::CSS::Rule.new(keyword.to_s.downcase).tap do |rule|
-            parent.rules << rule
-          end
+          Glimmer::CSS::Rule.new(keyword.to_s.downcase, parent: parent)
         end
       end
     end

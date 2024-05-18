@@ -19,29 +19,11 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/dsl/parent_expression'
-require 'glimmer/css/style_sheet'
-require 'glimmer/css/rule'
-
 module Glimmer
-  module DSL
-    module CSS
-      module GeneralRuleExpression
-        include ParentExpression
-        
-        def can_interpret?(parent, keyword, *args, &block)
-          super(parent, keyword, *args, &block) and
-            (
-              parent.is_a?(Glimmer::CSS::StyleSheet) or
-              parent.is_a?(Glimmer::CSS::MediaQuery)
-            ) and
-            block_given? and
-            !args.empty?
-        end
-
-        def interpret(parent, keyword, *args, &block)
-          Glimmer::CSS::Rule.new(args.first.to_s, parent: parent)
-        end
+  module CSS
+    module RuleComposite
+      def rules
+        @rules ||= []
       end
     end
   end

@@ -29,6 +29,7 @@ require 'glimmer/dsl/css/rul_expression'
 require 'glimmer/dsl/css/ru_expression'
 require 'glimmer/dsl/css/s_expression'
 require 'glimmer/dsl/css/pv_expression'
+require 'glimmer/dsl/css/media_expression'
 
 module Glimmer
   module DSL
@@ -36,6 +37,7 @@ module Glimmer
       Engine.add_dynamic_expressions(
         CSS,
         %w[
+          media
           element_rule
           dynamic_property
         ]

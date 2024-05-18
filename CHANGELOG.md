@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.0
+
+- Support media queries
+
 ## 1.2.3
 
 - Add `r`, `ru`, `rul`, `rule`, `_` alternatives to `s` for specifying a CSS rule selector with a block of expressions (e.g. `r('body > h1') { color: red; }`)
