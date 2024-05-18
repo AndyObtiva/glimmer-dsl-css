@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'glimmer', '>= 2.0.0', '< 3.0.0'
 
+gem 'css_parser', '>= 1.0.0', '< 2.0.0'
+
 group :development do
   gem 'rspec-mocks', '~> 3.0'
   gem 'rspec', '~> 3.0'

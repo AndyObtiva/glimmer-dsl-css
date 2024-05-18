@@ -27,12 +27,12 @@ describe "Glimmer CSS DSL" do
   it 'renders element selector with two properties' do
     @target = css {
       a {
-        background :red
+        display 'none'
         text_align :center
       }
     }
    
-    expect(@target.to_css).to eq('a{background:red;text-align:center}')
+    expect(@target.to_css).to eq('a{display:none;text-align:center}')
   end
    
   it 'renders two element selectors with two properties each' do

@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/glimmer/css/css_minifier'
+
+usage = "***Glimmer DSL for CSS - CSS Minifier***\nUsage: minify_css path_to_css_file"
+
+# TODO support option to select rule, or rul, or r
+
+if ARGV.empty?
+  puts usage
+else
+  css_file_path = ARGV.first
+  puts "Minifying CSS for input file: #{css_file_path}"
+  css = File.read(css_file_path)
+  converter = Glimmer::CSS::CSSMinifier.new
+  minified_css = converter.convert(css)
+  minified_css_file_path = "#{File.basename(css_file_path, '.css')}.minified.css"
+  File.write(minified_css_file_path, minified_css)
+  puts "Converted output file: #{minified_css_file_path}"
+end

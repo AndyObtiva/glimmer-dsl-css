@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/glimmer/css/css_to_glimmer_converter'
+
+usage = "***Glimmer DSL for CSS - CSS to Glimmer Converter***\nUsage: css_to_glimmer path_to_css_file"
+
+if ARGV.empty?
+  puts usage
+else
+  css_file_path = ARGV.last
+  puts "Converting from CSS syntax to Glimmer DSL Ruby syntax for input file: #{css_file_path}"
+  css = File.read(css_file_path)
+  rule_keyword = ARGV.find { |arg| arg.start_with?("-r=") }.to_s.split('=')[1].to_s
+  converter = rule_keyword.empty? ? Glimmer::CSS::CSSToGlimmerConverter.new : Glimmer::CSS::CSSToGlimmerConverter.new(rule_keyword: rule_keyword)
+  glimmer = converter.convert(css)
+  glimmer_file_path = "#{css_file_path}.glimmer.rb"
+  File.write(glimmer_file_path, glimmer)
+  puts "Converted output file: #{glimmer_file_path}"
+end

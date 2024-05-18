@@ -24,8 +24,8 @@ unless jeweler_required.nil?
     gem.description = %Q{Glimmer DSL for CSS (Ruby Programmable Cascading Style Sheets)}
     gem.email = "andy.am@gmail.com"
     gem.authors = ["AndyMaleh"]
-    gem.executables = []
-    gem.files = Dir['README.md', 'LICENSE.txt', 'VERSION', 'CHANGELOG.md', 'CONTRIBUTING.md', 'glimmer-dsl-css.gemspec', 'lib/**/*']
+    gem.executables = ['css_to_glimmer', 'minify_css']
+    gem.files = Dir['README.md', 'LICENSE.txt', 'VERSION', 'CHANGELOG.md', 'CONTRIBUTING.md', 'glimmer-dsl-css.gemspec', 'lib/**/*', 'bin/**/*']
     # dependencies defined in Gemfile
   end
   Jeweler::RubygemsDotOrgTasks.new

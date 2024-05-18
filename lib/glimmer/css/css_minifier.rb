@@ -19,18 +19,11 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/css/rule_composite'
-require 'glimmer/css/rule'
-
 module Glimmer
   module CSS
-    class MediaQuery < Rule
-      include RuleComposite
-    
-      def to_css
-        css = "@media #{selector}{"
-        css += rules.map(&:to_css).join
-        css += "}"
+    class CSSMinifier
+      def convert(css)
+        css.lines.map(&:chomp).map(&:strip).join
       end
     end
   end

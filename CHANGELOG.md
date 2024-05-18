@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.4.0
+
+- `css_to_glimmer` converter command for automatically converting CSS to Glimmer DSL Ruby code
+- `css_to_glimmer` -r=rule_keyword option to customize rule keyword (rule has aliases: rul, ru, r, s, _)
+- `minifier` converter command for automatically minifying CSS
+- Fix issue with `display` CSS property not getting interpreted successfully in Glimmer DSL Ruby code
+
 ## 1.3.0
 
 - Support media queries
