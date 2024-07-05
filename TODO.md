@@ -4,8 +4,6 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 
 ## Next
 
-- Support `raw 'background-color: red;'` keyword to allow adding raw CSS to a `css { }` block
-
 - Document how to include method-based CSS mixins in Glimmer DSL for CSS
 - Support the new CSS nesting feature (ability to nest a rule within another rule using &)
 - Document an example with an `if` statement and with looping (e.g. `times` or `each`)
@@ -22,3 +20,5 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 ## Maybe
 
 - Consider implementing `Numeric` unit methods like `px` and `pt` to be able to write values not as Strings like `39.px`. This idea might not be worth the cost if using Strings is good enough.
+- Consider supporting an output format that is programmer friendly with an option switch (e.g. Glimmer::Config.minify = false). That is useful in the frontend (e.g. in Opal) because minification is not needed there as there is no download of CSS. CSS is used immediately.
+- Consider including a CSS minifier gem that works better than the built-in minifier like `cssminify2` for example

@@ -23,30 +23,15 @@ require 'glimmer/css/css_fragment'
 
 module Glimmer
   module CSS
-    class Rule
+    module CssFragmentComposite
       include CssFragment
       
-      attr_reader :selector, :properties
-
-      def initialize(selector, parent:)
-        @selector = selector
-        @properties = {}
-        @parent = parent
-        parent.children << self
+      def children
+        @children ||= []
       end
-
-      def add_property(keyword, *args)
-        keyword = keyword.to_s.downcase.gsub('_', '-')
-        @properties[keyword] = args.first
-      end
-
+      
       def to_css
-        css = "#{@selector}{"
-        css += @properties.map do |name, value|
-          value = "#{value}px" if value.is_a?(Numeric)
-          "#{name}:#{value}"
-        end.join(';')
-        css += "}"
+        children.map(&:to_css).join
       end
     end
   end

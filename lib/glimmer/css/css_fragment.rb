@@ -19,34 +19,17 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/css/css_fragment'
-
 module Glimmer
   module CSS
-    class Rule
-      include CssFragment
-      
-      attr_reader :selector, :properties
-
-      def initialize(selector, parent:)
-        @selector = selector
-        @properties = {}
-        @parent = parent
-        parent.children << self
-      end
-
-      def add_property(keyword, *args)
-        keyword = keyword.to_s.downcase.gsub('_', '-')
-        @properties[keyword] = args.first
-      end
-
+    module CssFragment
+      # Subclasses must override to return a CSS String
       def to_css
-        css = "#{@selector}{"
-        css += @properties.map do |name, value|
-          value = "#{value}px" if value.is_a?(Numeric)
-          "#{name}:#{value}"
-        end.join(';')
-        css += "}"
+        raise 'Not implemented! Subclasses must override/implement to return a CSS String.'
+      end
+      
+      # Returns the value of to_css
+      def to_s
+        to_css
       end
     end
   end

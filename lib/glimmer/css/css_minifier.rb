@@ -19,9 +19,14 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+require 'singleton'
+
 module Glimmer
   module CSS
+    # A very rudimentary CSS minifier. It does not minify CSS completely at the moment.
     class CSSMinifier
+      include Singleton
+      
       def convert(css)
         css.lines.map(&:chomp).map(&:strip).join
       end

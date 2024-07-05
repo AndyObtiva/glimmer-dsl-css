@@ -48,7 +48,7 @@ module Glimmer
       end
       
       def minify(css)
-        CSSMinifier.new.convert(css)
+        CSSMinifier.instance.convert(css)
       end
       
       def remove_charset(css)

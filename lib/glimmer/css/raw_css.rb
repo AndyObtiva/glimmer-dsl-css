@@ -20,33 +20,24 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 require 'glimmer/css/css_fragment'
+require 'glimmer/css/css_minifier'
 
 module Glimmer
   module CSS
-    class Rule
+    class RawCss
       include CssFragment
       
-      attr_reader :selector, :properties
+      attr_reader :raw_css_string
 
-      def initialize(selector, parent:)
-        @selector = selector
-        @properties = {}
+      def initialize(raw_css_string, parent:)
+        @raw_css_string = raw_css_string
         @parent = parent
+        @minifier = CSSMinifier.instance
         parent.children << self
       end
 
-      def add_property(keyword, *args)
-        keyword = keyword.to_s.downcase.gsub('_', '-')
-        @properties[keyword] = args.first
-      end
-
       def to_css
-        css = "#{@selector}{"
-        css += @properties.map do |name, value|
-          value = "#{value}px" if value.is_a?(Numeric)
-          "#{name}:#{value}"
-        end.join(';')
-        css += "}"
+        @minifier.convert(@raw_css_string)
       end
     end
   end

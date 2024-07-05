@@ -12,7 +12,7 @@ else
   css_file_path = ARGV.first
   puts "Minifying CSS for input file: #{css_file_path}"
   css = File.read(css_file_path)
-  converter = Glimmer::CSS::CSSMinifier.new
+  converter = Glimmer::CSS::CSSMinifier.instance
   minified_css = converter.convert(css)
   minified_css_file_path = "#{File.basename(css_file_path, '.css')}.minified.css"
   File.write(minified_css_file_path, minified_css)

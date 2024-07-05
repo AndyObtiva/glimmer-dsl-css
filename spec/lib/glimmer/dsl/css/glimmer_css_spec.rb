@@ -139,7 +139,39 @@ describe "Glimmer CSS DSL" do
    
     expect(@target.to_css).to eq('body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section#menu > a#home{background:red;text-align:center}')
   end
-   
+  
+  it 'renders two custom selectors with two properties each + 3 raw CSS blocks around them' do
+    @target = css {
+      raw '
+        body {
+          background-color: white;
+        }
+      '
+      r('body#app h1#title') {
+        font_size 16
+        font_family '"Times New Roman", Times, serif'
+      }
+      raw '
+        section {
+          background-color: grey;
+          font-size: 17px;
+        }
+      '
+      r('section#menu > a#home') {
+        background :red
+        text_align :center
+      }
+      raw '
+        a:hover {
+          color: blue;
+          font-size: 1.2em;
+        }
+      '
+    }
+    
+    expect(@target.to_css).to eq('body {background-color: white;}body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}section {background-color: grey;font-size: 17px;}section#menu > a#home{background:red;text-align:center}a:hover {color: blue;font-size: 1.2em;}')
+  end
+     
   it 'renders two custom selectors with two custom properties each' do
     @target = css {
       s('body#app h1#title') {

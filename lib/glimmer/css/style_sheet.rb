@@ -19,19 +19,15 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'glimmer/css/rule_composite'
+require 'glimmer/css/css_fragment_composite'
 require 'glimmer/css/rule'
+require 'glimmer/css/media_query'
+require 'glimmer/css/raw_css'
 
 module Glimmer
   module CSS
     class StyleSheet
-      include RuleComposite
-
-      def to_css
-        rules.map(&:to_css).join
-      end
-
-      alias to_s to_css
+      include CssFragmentComposite
     end
   end
 end

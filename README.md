@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.4.1
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.5.0
 ## Ruby Programmable Cascading Style Sheets
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
@@ -64,7 +64,7 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-gem install glimmer-dsl-css -v 1.4.1
+gem install glimmer-dsl-css -v 1.5.0
 ```
 
 Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
@@ -79,7 +79,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 1.4.1'
+gem 'glimmer-dsl-css', '~> 1.5.0'
 ```
 
 And, then run:
@@ -199,6 +199,49 @@ Output (minified CSS):
 
 ```css
 body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:24px}
+```
+
+### Raw CSS
+
+You can mix in raw CSS with Glimmer CSS DSL syntax by using the `raw` keyword and passing it an argument that is the raw CSS `String`. That enables adding programmability (e.g. `if/else` statements) to some parts of a CSS document while leaving the others as raw CSS.
+
+Example (you can try in IRB):
+
+```ruby
+require 'glimmer-dsl-css'
+
+include Glimmer
+
+color = 'black'
+size = 8
+
+@css = css {
+  # Programmable CSS
+  body {
+    font_size size < 10 ? "0.#{size}em" : '1.1em'
+    background color.nil? ? 'white' : color
+  }
+  
+  # Non-Programmable CSS
+  raw '
+  body > h1 {
+    background-color: red;
+    font-size: 24px;
+  }
+  
+  body > section {
+    font-size: 16px;
+  }
+  '
+}
+
+puts @css
+```
+
+Output (minified CSS):
+
+```css
+body{font-size:0.8em;background:black}body > h1 {background-color: red;font-size: 24px;}body > section {font-size: 16px;}
 ```
 
 ### CSS to Glimmer Converter

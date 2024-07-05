@@ -19,11 +19,24 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+require 'glimmer/dsl/static_expression'
+require 'glimmer/css/raw_css'
+
 module Glimmer
-  module CSS
-    module RuleComposite
-      def rules
-        @rules ||= []
+  module DSL
+    module CSS
+      class RawExpression < StaticExpression
+        def can_interpret?(parent, keyword, *args, &block)
+          !block_given? and
+            !args.empty? and
+            args.size == 1 and
+            parent.is_a?(Glimmer::CSS::StyleSheet)
+        end
+
+        def interpret(parent, keyword, *args, &block)
+          raw_css_string = args.first
+          Glimmer::CSS::RawCss.new(raw_css_string, parent: parent)
+        end
       end
     end
   end
