@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.5.0
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.5.1
 ## Ruby Programmable Cascading Style Sheets
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
@@ -17,8 +17,10 @@ include Glimmer
 
 @css = css {
   body {
-    font_size '1.1em'
+    font_size 1.1.em
     background 'white'
+    width 90.%
+    height 100.%
   }
   
   rule('body > h1') {
@@ -40,7 +42,7 @@ puts @css
 Output (minified CSS):
 
 ```css
-body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:24px}@media screen and (min-width: 30em) and (orientation: landscape){body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}}
+body{font-size:1.1em;background:white;width:90%;height:100%}body > h1{background-color:red;font-size:24px}@media screen and (min-width: 30em) and (orientation: landscape){body#app h1#title{font-size:16px;font-family:"Times New Roman", Times, serif}}
 ```
 
 The key reason for using the CSS DSL instead of actual CSS is Ruby programmability without getting lost in string concatenations. The CSS DSL helps in including conditional CSS with `if` or ternery expressions as well as looping from lists while building CSS.
@@ -64,7 +66,7 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-gem install glimmer-dsl-css -v 1.5.0
+gem install glimmer-dsl-css -v 1.5.1
 ```
 
 Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
@@ -79,7 +81,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 1.5.0'
+gem 'glimmer-dsl-css', '~> 1.5.1'
 ```
 
 And, then run:
@@ -172,9 +174,18 @@ The `body > h1` rule could have been written in any other alternative way:
   end
 ```
 
-### Numeric Values
+### Numeric Values and Unit Types
 
-As you saw above, numeric values (e.g. `24` in `font_size 24`) automatically get suffixed with `px` by convention (e.g. `24px`).
+All CSS unit types are supported by invoking methods matching them on Numeric objects (e.g. `3.em` produces `'3em'`):
+- `px` (default if not specified)
+- `in`
+- `pt`
+- `cm`
+- `mm`
+- `em`
+- `%`
+
+For example:
 
 ```ruby
 require 'glimmer-dsl-css'
@@ -183,7 +194,37 @@ include Glimmer
 
 @css = css {
   body {
-    font_size '1.1em'
+    font_size 1.1.em
+    width 80.%
+    height 100.%
+    background 'white'
+  }
+  
+  r('body > h1') {
+    font_size 24.px
+    background_color :red
+  }
+}
+
+puts @css
+```
+
+Output (minified CSS):
+
+```css
+body{font-size:1.1em;width:80%;height:100%;background:white}body > h1{font-size:24px;background-color:red}
+```
+
+Also, as you saw above, numeric values (e.g. `24` in `font_size 24`) automatically get suffixed with `px` by convention (e.g. `24px`).
+
+```ruby
+require 'glimmer-dsl-css'
+
+include Glimmer
+
+@css = css {
+  body {
+    font_size 14
     background 'white'
   }
   _ 'body > h1' do
@@ -198,7 +239,7 @@ puts @css
 Output (minified CSS):
 
 ```css
-body{font-size:1.1em;background:white}body > h1{background-color:red;font-size:24px}
+body{font-size:14px;background:white}body > h1{background-color:red;font-size:24px}
 ```
 
 ### Raw CSS
@@ -357,6 +398,10 @@ puts style_sheet.to_s
 Learn more about how to use this DSL alongside other Glimmer DSLs:
 
 [Glimmer Multi-DSL Support](https://github.com/AndyObtiva/glimmer/tree/master#multi-dsl-support)
+
+## Influences
+
+- https://github.com/opal/paggio
 
 ## Help
 

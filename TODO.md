@@ -11,6 +11,7 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 - Support mixins via classes (class-based CSS mixins)
 - Optimize performance by removing unnecessary DSL expressions like element_rule_expression.rb and pv_expression.rb
 - Removed unnecessary files that are remnant of original glimmer before extraction
+- When auto-generating CSS DSL from pure CSS, convert Numeric units (e.g. `em`, `px`, etc...) to new unit syntax
 
 ## Tasks
 

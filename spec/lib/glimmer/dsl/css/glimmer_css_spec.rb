@@ -53,7 +53,7 @@ describe "Glimmer CSS DSL" do
   it 'renders two custom selectors with two properties each (one is numeric representing pixels)' do
     @target = css {
       s('body#app h1#title') {
-        font_size 16
+        font_size 16.px
         font_family '"Times New Roman", Times, serif'
       }
       s('section#menu > a#home') {
@@ -192,7 +192,7 @@ describe "Glimmer CSS DSL" do
       @target = css {
         media('screen and (min-width: 30em) and (orientation: landscape)') {
           rule('body#app h1#title') {
-            font_size 16
+            font_size 16.px
             font_family '"Times New Roman", Times, serif'
           }
           rule('section#menu > a#home') {
@@ -209,7 +209,7 @@ describe "Glimmer CSS DSL" do
       @target = css {
         media('screen and (min-width: 30em) and (orientation: landscape)') {
           rule('body#app h1#title') {
-            font_size 16
+            font_size 16.px
             font_family '"Times New Roman", Times, serif'
           }
         }

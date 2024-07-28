@@ -26,6 +26,9 @@ require 'facets/string/camelcase'
 require 'glimmer'
 
 require 'glimmer/dsl/css/dsl'
+require 'glimmer-dsl-css/ext/numeric'
+require 'glimmer-dsl-css/ext/integer'
+require 'glimmer-dsl-css/ext/float'
 
 module Glimmer
   def _(selector, &rule_block)
