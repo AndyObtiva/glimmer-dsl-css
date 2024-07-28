@@ -1,7 +1,7 @@
 require "spec_helper"
   
 describe Numeric do
-  %w[px in pt cm mm em].each do |unit_type|
+  %w[px in pt pc Q cm mm ch ex em rem vh vw vmin vmax].each do |unit_type|
     describe "##{unit_type}" do
       it "returns integer value as a string including #{unit_type} suffix" do
         expect(16.send(unit_type)).to eq("16#{unit_type}")

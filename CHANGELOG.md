@@ -1,9 +1,14 @@
 # Change Log
 
+# 1.5.2
+
+- Support `rem`, `Q`, `pt`, `pc`, `ch`, `ex`, `vh`, `vw`, `vmin`, `vmax` methods on `Numeric` to represent their respective CSS units (e.g. `14.vh` => `"14vh"` / `2.rem` => `"2rem"`)
+- Fix `%` `Integer`/`Float` operator in Opal by implementing on `Number` class instead.
+
 # 1.5.1
 
-- Support px in pt cm mm em methods on `Numeric` to allow producing px in pt cm mm em CSS values (e.g. `3.px` => "3px")
-- Support % method on `Integer`/`Float` to allow producing % CSS values (e.g. `90.%` => "90%")
+- Support `px`, `in`, `pt`, `cm`, `mm`, `em` methods on `Numeric` to allow producing `px`, `in`, `pt`, `cm`, `mm`, `em` CSS values (e.g. `14.px` => `"14px"` / `2.em` => `"2em"`)
+- Support % method on `Integer`/`Float` to allow producing % CSS values (e.g. `90.%` => `"90%"`)
 
 ## 1.5.0
 

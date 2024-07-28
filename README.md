@@ -1,4 +1,4 @@
-# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.5.1
+# [<img src="https://raw.githubusercontent.com/AndyObtiva/glimmer/master/images/glimmer-logo-hi-res.png" height=85 />](https://github.com/AndyObtiva/glimmer) Glimmer DSL for CSS 1.5.2
 ## Ruby Programmable Cascading Style Sheets
 [![Gem Version](https://badge.fury.io/rb/glimmer-dsl-css.svg)](http://badge.fury.io/rb/glimmer-dsl-css)
 [![Travis CI](https://travis-ci.com/AndyObtiva/glimmer-dsl-css.svg?branch=master)](https://travis-ci.com/github/AndyObtiva/glimmer-dsl-css)
@@ -66,7 +66,7 @@ Please follow these instructions to make the `glimmer` command available on your
 
 Run this command to install directly:
 ```
-gem install glimmer-dsl-css -v 1.5.1
+gem install glimmer-dsl-css -v 1.5.2
 ```
 
 Note: In case you are using JRuby, `jgem` is JRuby's version of the `gem` command. RVM allows running `gem` as an alias in JRuby. Otherwise, you may also run `jruby -S gem install ...`
@@ -81,7 +81,7 @@ That's it! Requiring the gem activates the Glimmer CSS DSL automatically.
 
 Add the following to `Gemfile` (after `glimmer-dsl-swt` and/or `glimmer-dsl-opal` if included too):
 ```
-gem 'glimmer-dsl-css', '~> 1.5.1'
+gem 'glimmer-dsl-css', '~> 1.5.2'
 ```
 
 And, then run:
@@ -178,11 +178,18 @@ The `body > h1` rule could have been written in any other alternative way:
 
 All CSS unit types are supported by invoking methods matching them on Numeric objects (e.g. `3.em` produces `'3em'`):
 - `px` (default if not specified)
-- `in`
 - `pt`
+- `pc`
+- `Q`
+- `in`
 - `cm`
 - `mm`
 - `em`
+- `rem`
+- `vh`
+- `vw`
+- `vmin`
+- `vmax`
 - `%`
 
 For example:

@@ -27,8 +27,13 @@ require 'glimmer'
 
 require 'glimmer/dsl/css/dsl'
 require 'glimmer-dsl-css/ext/numeric'
-require 'glimmer-dsl-css/ext/integer'
-require 'glimmer-dsl-css/ext/float'
+
+if RUBY_ENGINE != 'opal'
+  require 'glimmer-dsl-css/ext/integer'
+  require 'glimmer-dsl-css/ext/float'
+else
+  require 'glimmer-dsl-css/ext/number'
+end
 
 module Glimmer
   def _(selector, &rule_block)

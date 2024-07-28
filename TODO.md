@@ -4,7 +4,11 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 
 ## Next
 
+
+## Tasks
+
 - Document how to include method-based CSS mixins in Glimmer DSL for CSS
+- Generate numeric values as is for properties that do not take pixels as their value (e.g. `line_height 1` should not produce `line-height: 1px;`)
 - Support the new CSS nesting feature (ability to nest a rule within another rule using &)
 - Document an example with an `if` statement and with looping (e.g. `times` or `each`)
 - Support nesting rules within each other (e.g. `r('table') { r('tr') { background :blue } }` is equivalent to `r('table tr') { background :blue }`)
@@ -12,11 +16,12 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 - Optimize performance by removing unnecessary DSL expressions like element_rule_expression.rb and pv_expression.rb
 - Removed unnecessary files that are remnant of original glimmer before extraction
 - When auto-generating CSS DSL from pure CSS, convert Numeric units (e.g. `em`, `px`, etc...) to new unit syntax
-
-## Tasks
-
 - Support [all CSS functions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions) like `rgb(r, g, b)` and `rgba(r, g, b, a)` and dashes become underscore like `linear-gradient()` becoming `linear_gradient()`. This probably has to be done in a dynamic way to generate any function.
 - Support colors as Hex Ruby values (e.g. `0x1f3b5d`)
+- Support all length units: https://developer.mozilla.org/en-US/docs/Web/CSS/length
+- Support all angle units: https://developer.mozilla.org/en-US/docs/Web/CSS/angle
+- Support all time units: https://developer.mozilla.org/en-US/docs/Web/CSS/time
+- Support all resolution units: https://developer.mozilla.org/en-US/docs/Web/CSS/resolution
 
 ## Maybe
 
