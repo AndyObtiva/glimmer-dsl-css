@@ -2,8 +2,8 @@
 
 # 1.5.1
 
-- Support px in pt cm mm em methods on `Numeric` to allow producing px in pt cm mm em CSS values (e.g. `3.px` => "3px")
-- Support % method on `Integer`/`Float` to allow producing % CSS values (e.g. `90.%` => "90%")
+- Support `px`, `in`, `pt`, `cm`, `mm`, `em` methods on `Numeric` to allow producing `px`, `in`, `pt`, `cm`, `mm`, `em` CSS values (e.g. `14.px` => `"14px"` / `2.em` => `"2em"`)
+- Support % method on `Integer`/`Float` to allow producing % CSS values (e.g. `90.%` => `"90%"`)
 
 ## 1.5.0
 
