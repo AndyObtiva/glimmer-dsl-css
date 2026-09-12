@@ -7,6 +7,7 @@ Here is a list of tasks to do (moved to CHANGELOG.md once done).
 
 ## Tasks
 
+- Support CSS property symbol values with underscores that become dashes once converted to string values
 - Document how to include method-based CSS mixins in Glimmer DSL for CSS
 - Generate numeric values as is for properties that do not take pixels as their value (e.g. `line_height 1` should not produce `line-height: 1px;`)
 - Support the new CSS nesting feature (ability to nest a rule within another rule using &)
